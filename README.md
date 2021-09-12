@@ -27,15 +27,6 @@ wget -N --no-check-certificate -q -O install.sh "https://raw.githubusercontent.c
 * Group owner only supply is extremely limited of support, if you have any questions, you can ask group friends
 * Every Sunday of 3:00 AM, Nginx will since move heavy start with a combine Certificate of issuance timed task. During this period, the node cannot connect normally. The estimated duration is for several seconds to two minutes.
 
-### renew 日志
-> renew 内容Please Check  CHANGELOG.md
-
-### 鸣谢
-* ~~本script of 另一个分支Version（Use Host）address ： https://github.com/dylanbai8/V2Ray_ws-tls_Website_onekey Please 根据需求进行select select~~ Should 作者可能already 停止dimension Protect
-* 本script中 MTProxy-go TLS Versionitem 目引用 https://github.com/whunt1/onekeymakemtg 在此grateful whunt1
-* 本script中  sharp speed4 combine 1script原item 目引用 https://www.94ish.me/1635.html 在此grateful
-* 本script中  sharp speed4 combine 1scriptmodify Versionitem 目引用 https://github.com/ylx2016/Linux-NetSpeed 在此grateful ylx2016
-
 ### Certificate
 > If you already have the domain name of Certificate file used by NS you, you can name crt with key file for v2ray.crt v2ray.key and place it in the /data directory (if the directory Do not exist Please create the directory first), Please NoticeCertificate file permissions and CertificateValid period, since the definition of CertificateValid after the period expires Please since line renewal
 
