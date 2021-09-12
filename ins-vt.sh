@@ -15,7 +15,7 @@ date
 # install v2ray
 GitUser="rockneters"
 #wget https://github.com/${GitUser}/
-wget https://raw.githubusercontent.com/${GitUser}/kawakawa/main/install/go.sh && chmod +x go.sh && ./go.sh
+wget https://raw.githubusercontent.com/${GitUser}/piturays/main/install/go.sh && chmod +x go.sh && ./go.sh
 rm -f /root/go.sh
 mkdir /root/.acme.sh
 curl https://acme-install.netlify.app/acme.sh -o /root/.acme.sh/acme.sh
@@ -508,22 +508,22 @@ systemctl start v2ray@trojan.service
 systemctl restart v2ray
 systemctl enable v2ray
 cd /usr/bin
-wget -O addws "https://raw.githubusercontent.com/${GitUser}/kawakawa/main/tambah/addws.sh"
-wget -O addvless "https://raw.githubusercontent.com/${GitUser}/kawakawa/main/tambah/addvless.sh"
-wget -O addtr "https://raw.githubusercontent.com/${GitUser}/kawakawa/main/tambah/addtr.sh"
-wget -O delws "https://raw.githubusercontent.com/${GitUser}/kawakawa/main/hapus/delws.sh"
-wget -O delvless "https://raw.githubusercontent.com/${GitUser}/kawakawa/main/hapus/delvless.sh"
-wget -O deltr "https://raw.githubusercontent.com/${GitUser}/kawakawa/main/hapus/deltr.sh"
-wget -O cekws "https://raw.githubusercontent.com/${GitUser}/kawakawa/main/cekws.sh"
-wget -O cekvless "https://raw.githubusercontent.com/${GitUser}/kawakawa/main/cekvless.sh"
-wget -O cektr "https://raw.githubusercontent.com/${GitUser}/kawakawa/main/cektr.sh"
-wget -O renewws "https://raw.githubusercontent.com/${GitUser}/kawakawa/main/renewws.sh"
-wget -O renewvless "https://raw.githubusercontent.com/${GitUser}/kawakawa/main/renewvless.sh"
-wget -O renewtr "https://raw.githubusercontent.com/${GitUser}/kawakawa/main/renewtr.sh"
-wget -O xp-ws "https://raw.githubusercontent.com/${GitUser}/kawakawa/main/xp-ws.sh"
-wget -O xp-tr "https://raw.githubusercontent.com/${GitUser}/kawakawa/main/xp-tr.sh"
-wget -O xp-vless "https://raw.githubusercontent.com/${GitUser}/kawakawa/main/xp-vless.sh"
-wget -O certv2ray "https://raw.githubusercontent.com/${GitUser}/kawakawa/main/cert.sh"
+wget -O addws "https://raw.githubusercontent.com/${GitUser}/piturays/main/add/addws.sh"
+wget -O addvless "https://raw.githubusercontent.com/${GitUser}/piturays/main/add/addvless.sh"
+wget -O addtr "https://raw.githubusercontent.com/${GitUser}/piturays/main/add/addtr.sh"
+#wget -O delws "https://raw.githubusercontent.com/${GitUser}/piturays/main/hapus/delws.sh"
+#wget -O delvless "https://raw.githubusercontent.com/${GitUser}/piturays/main/hapus/delvless.sh"
+#wget -O deltr "https://raw.githubusercontent.com/${GitUser}/piturays/main/hapus/deltr.sh"
+#wget -O cekws "https://raw.githubusercontent.com/${GitUser}/piturays/main/cekws.sh"
+#wget -O cekvless "https://raw.githubusercontent.com/${GitUser}/piturays/main/cekvless.sh"
+#wget -O cektr "https://raw.githubusercontent.com/${GitUser}/piturays/main/cektr.sh"
+#wget -O renewws "https://raw.githubusercontent.com/${GitUser}/piturays/main/renewws.sh"
+#wget -O renewvless "https://raw.githubusercontent.com/${GitUser}/piturays/main/renewvless.sh"
+#wget -O renewtr "https://raw.githubusercontent.com/${GitUser}/piturays/main/renewtr.sh"
+#wget -O xp-ws "https://raw.githubusercontent.com/${GitUser}/piturays/main/xp-ws.sh"
+#wget -O xp-tr "https://raw.githubusercontent.com/${GitUser}/piturays/main/xp-tr.sh"
+#wget -O xp-vless "https://raw.githubusercontent.com/${GitUser}/piturays/main/xp-vless.sh"
+#wget -O certv2ray "https://raw.githubusercontent.com/${GitUser}/piturays/main/cert.sh"
 chmod +x addws
 chmod +x addvless
 chmod +x addtr
