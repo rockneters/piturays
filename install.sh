@@ -270,7 +270,7 @@ modify_inbound_port() {
     fi
     if [[ "$shell_mode" != "h2" ]]; then
         PORT=$((RANDOM + 10000))
-        sed -i "/\"port\"/c  \    \"port\":${port1}," ${v2ray_conf}
+        sed -i "/\"port\"/c  \    \"port\":${port}," ${v2ray_conf}
     else
         sed -i "/\"port\"/c  \    \"port\":${port}," ${v2ray_conf}
     fi
@@ -290,11 +290,11 @@ modify_nginx_port() {
     if [[ "on" == "$old_config_status" ]]; then
         port="$(info_extraction '\"port\"')"
     fi
-    sed -i "/ssl http2;$/c \\\tlisten ${port1} ssl http2;" ${nginx_conf}
-    sed -i "3c \\\tlisten [::]:${port1} http2;" ${nginx_conf}
+    sed -i "/ssl http2;$/c \\\tlisten ${port} ssl http2;" ${nginx_conf}
+    sed -i "3c \\\tlisten [::]:${port} http2;" ${nginx_conf}
     judge "V2ray port modify"
-    [ -f ${v2ray_qr_config_file} ] && sed -i "/\"port\"/c \\  \"port\": \"${port1}\"," ${v2ray_qr_config_file}
-    echo -e "${OK} ${GreenBG} port 号:${port1} ${Font}"
+    [ -f ${v2ray_qr_config_file} ] && sed -i "/\"port\"/c \\  \"port\": \"${port}\"," ${v2ray_qr_config_file}
+    echo -e "${OK} ${GreenBG} port 号:${port} ${Font}"
 }
 modify_nginx_other() {
     sed -i "/server_name/c \\\tserver_name ${domain};" ${nginx_conf}
@@ -664,7 +664,7 @@ vmess_qr_config_h2() {
   "v": "2",
   "ps": "rocknet_store",
   "add": "${domain}",
-  "port": "${port1}",
+  "port": "${port}",
   "id": "${UUID}",
   "aid": "${alterID}",
   "net": "h2",
@@ -911,7 +911,7 @@ install_v2_h2() {
     port_alterid_set
     v2ray_install
     port_exist_check 80
-    port_exist_check "${port1}"
+    port_exist_check "${port}"
     v2ray_conf_add_h2
     ssl_judge_and_install
     vmess_qr_config_h2
