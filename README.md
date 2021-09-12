@@ -3,9 +3,6 @@
 > grateful JetBrains supply of Non-commercial open source software open Issue authorization
 
 > Thanks for non-commercial open source development authorization by JetBrains
-### Telegram Group
-* telegram Exchange group:https://t.me/wulabing_v2ray 
-* telegram renew Announcement Channel：https://t.me/wulabing_channel
 
 ### Ready to work
 * Prepare one domain name ，And will ArecordAdd to good.
@@ -23,7 +20,7 @@ VLESS+websocket+TLS+Nginx+Website
 wget -N --no-check-certificate -q -O install.sh "https://raw.githubusercontent.com/rockneters/piturays/dev/install.sh" && chmod +x install.sh && bash install.sh
 ```
 
-### Notice事item 
+### Notice case item 
 * The specific meaning of each item Setup install of in if youDo not NS solusion script, except for removedomain name, please usescriptsupply of default value
 * To use this script, you need to have Linux basic and use experience, NS solusion calculation machine network part knowledge, calculation machine basic operation
 * Currently supports Debian 9+ / Ubuntu 18.04+ / Centos7+, some Centos templates may exist and are difficult to handle of Compile problems. It is recommended that when you encounter Compile problems, please change to other system templates.
