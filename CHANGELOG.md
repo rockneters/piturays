@@ -27,13 +27,13 @@
 * 修复 bbr4 combine 1 403 forbidden 问题
 * 修复 部分临时 file 清理异常 问题
 *  change 默认only save keep TLS1.3
-* Add to Uninstall提供 Nginx save keepselect item 
-* Add to Nginx Configuration file  XFF 感谢 tg:@Cliwired
-* Add to ws DOH Configuration 感谢 tg:@auth_chain_b
+* Add to Uninstallsupply Nginx save keepselect item 
+* Add to Nginx Configuration file  XFF grateful tg:@Cliwired
+* Add to ws DOH Configuration grateful tg:@auth_chain_b
 
 ## 2020-01-25
 * 修复 curl依赖缺失
-* Add to MT-proxy-go Install代code，在此感谢 whunt1  of 贡献
+* Add to MT-proxy-go Install代code，在此grateful whunt1  of 贡献
 * 修复 测试签发 success，正式签发fail，后续heavy 装 guide 致 of 跳过Certificate签发问题
 
 ## 2019-12-30 
@@ -42,7 +42,7 @@
 *  combine 并 h2  Version combine 并至主Version并跟随renew ，h2 Version（ old Version）停止dimension Protect
 * 新增  changeUUID ALTERID PORT TLS Versionselect item 
 * 新增 V2ray 日志record and Check 
-* 新增 4 combine 1 bbr sharp speedscript引enter ，感谢 94ish.me 
+* 新增 4 combine 1 bbr sharp speedscript引enter ，grateful 94ish.me 
 * 新增 Uninstallselect item 
 * 新增 Certificate手moverenew ，原理andScheduled Tasksrenew 相同，CertificateValid period only 小于30天可renew ，默认Do not start用强制renew 
 
@@ -54,7 +54,7 @@
 * Add to参数 boost 可以直connect use 四 combine 一 bbr/ sharp speed script
 * 调整参数 tls_modify 兼容 TLS1.1 按需select select
 ## 2019-11-26
->  本Version有可能解决 ws tls  of 祖传断流玄学问题，如有需要Please 执行Installscript进行renew 
+>  本Version有可能solusion 决 ws tls  of 祖传断流玄学问题，如有需要Please 执行Installscript进行renew 
 * TLS Configurationmodify forsupport 1.2 1.3 可通过 tls_modify select item 切换
 * UninstallFunction support  可通过 uninstall select item Uninstall
 ### 2019-10-17
@@ -69,14 +69,14 @@
 * 修复 部分系统下 Nginx open machine since start Configuration失效 of 问题
 *  change heavy 复Install时，将Do not 对相同 of domain name 进行heavy 复 of Certificate申Please ，防止出现 Let's encrypt API 次数限制
 *  change 默认 alterID 64 -> 4 ，减少资source占用
-*  change nginx Install方式从source获pick  change for Compile Install，并 use新 VersionOpenssl，support tls1.3
+*  change nginx InstallWay 从source获pick  change for Compile Install，并 use新 VersionOpenssl，support tls1.3
 *  change nginx  Configuration file  ssl_protocols ssl_ciphers，适配 tls1.3
 *  change pick消对Debian8 Ubuntu 16.04  of 适配工作（本Version可能依 oldAvailable）
 *  change 默认页面camouflage  for html5 小游戏
 * 新增 InstallFinish，节点 Configurationletter interestkeep档
 * 新增  usesince 定义Certificate
-* 新增 chain connect方式 guide enter  guide enter 
-* 新增 二dimension code方式 guide enter 
+* 新增 chain connectWay  guide enter  guide enter 
+* 新增 二dimension codeWay  guide enter 
 ## 2018-04-10
 * vmess+http2 over tls scriptrenew 
 ## 2018-04-08
@@ -97,7 +97,7 @@ V3.2(Beta)
 V3.1(Beta)
 * 1.去remove无关 of 依赖
 * 2.Install顺序 change，SSL生成放在程序末尾
-* 3.NGINX InstallVersion统一 for latest  stable Version（ for将来可能进行 of  http2  and  tls1.3 适配做好准备,debian source默认 NGINX Version过低Do not support  http2）
+* 3.NGINX InstallVersion统一 for latest  stable Version（ for将来可能进行 of  http2  and  tls1.3 适配做 good准备,debian source默认 NGINX Version过低Do not support  http2）
 ## 2018-03-18
 V3.0(Stable)
 * 1.修复 Path 分流时访问特定 of camouflage  Path 时出现 of  Bad Request 问题 （统一 for404 Not Found）
@@ -113,7 +113,7 @@ V2.1.1(stable)
 * 2.尝试修复 GCE 默认纯净模板80Port occupation问题（等待更多反馈）
 ## 2018-02-04
 V2.1.1(stable)
-* 1. change local_ip 判断方式，从 本地网卡获pick  change至 命令获pick public net IP。
+* 1. change local_ip 判断Way ，从 本地网卡获pick  change至 命令获pick public net IP。
 * 1.修复 domain name dns resolve IP and Native IP Do not match 误报问题
 ## 2018-01-28
 v2.1.1(stable)
@@ -129,14 +129,14 @@ V2.1（stable）
 
 V2.0（stable）
 * 1.增加 Centos7 系统support 
-* 2.增加 since 定义port  和 since 定义alterID
+* 2.增加 since 定义port  with since 定义alterID
 * 3.完善 Install所需依赖
 * 4.修复 Ubuntu 系列系统Version判断异常 guide 致 of Installation interrupted问题
 * 5.修复 bug
 
 V1.02（beta）
 * 1.增加 系统判定，目前打算only support 带systemd of 较新主流open 发 Version系统
-* 2.Native  IP 获pick方式heavy 构
+* 2.Native  IP 获pickWay heavy 构
 
 ## 2017-12-05
 

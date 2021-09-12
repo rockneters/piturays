@@ -26,7 +26,7 @@ Font="\033[0m"
 #notification information
 # Info="${Green}[letter interest]${Font}"
 OK="${Green}[OK]${Font}"
-Error="${Red}[错误]${Font}"
+Error="${Red}[Mistake]${Font}"
 
 # Version
 shell_version="1.1.8.4"
@@ -58,7 +58,7 @@ old_config_status="off"
 # v2ray_plugin_version="$(wget -qO- "https://github.com/shadowsocks/v2ray-plugin/tags" | grep -E "/shadowsocks/v2ray-plugin/releases/tag/" | head -1 | sed -r 's/.*tag\/v(.+)\">.*/\1/')"
 
 #Move the old version configuration information to adapt to the version less than 1.1.0
-[[ -f "/etc/v2ray/vmess_qr.json" ]] && mv /etc/v2ray/vmess_qr.json $v2ray_qr_config_file
+[[ -f "/etc/v2ray/vmess_qr.json" ]] && mv /etc/v2ray/vmess_qr.json /usr/local/vmess_qr.json
 
 #Simple random number
 random_num=$((RANDOM%12+4))
@@ -119,7 +119,7 @@ judge() {
         echo -e "${OK} ${GreenBG} $1 Finish ${Font}"
         sleep 1
     else
-        echo -e "${Error} ${RedBG} $1 fail${Font}"
+        echo -e "${Error} ${RedBG} $1 fail ${Font}"
         exit 1
     fi
 }
@@ -137,7 +137,7 @@ chrony_install() {
 
     judge "chronyd start up "
 
-    timedatectl set-timezone Asia/Shanghai
+    timedatectl set-timezone Asia/Jakarta
 
     echo -e "${OK} ${GreenBG} Waiting for time synchronization ${Font}"
     sleep 10
@@ -270,7 +270,7 @@ modify_inbound_port() {
     fi
     if [[ "$shell_mode" != "h2" ]]; then
         PORT=$((RANDOM + 10000))
-        sed -i "/\"port\"/c  \    \"port\":${PORT}," ${v2ray_conf}
+        sed -i "/\"port\"/c  \    \"port\":${port1}," ${v2ray_conf}
     else
         sed -i "/\"port\"/c  \    \"port\":${port}," ${v2ray_conf}
     fi
@@ -290,11 +290,11 @@ modify_nginx_port() {
     if [[ "on" == "$old_config_status" ]]; then
         port="$(info_extraction '\"port\"')"
     fi
-    sed -i "/ssl http2;$/c \\\tlisten ${port} ssl http2;" ${nginx_conf}
-    sed -i "3c \\\tlisten [::]:${port} http2;" ${nginx_conf}
+    sed -i "/ssl http2;$/c \\\tlisten ${port1} ssl http2;" ${nginx_conf}
+    sed -i "3c \\\tlisten [::]:${port1} http2;" ${nginx_conf}
     judge "V2ray port modify"
-    [ -f ${v2ray_qr_config_file} ] && sed -i "/\"port\"/c \\  \"port\": \"${port}\"," ${v2ray_qr_config_file}
-    echo -e "${OK} ${GreenBG} port 号:${port} ${Font}"
+    [ -f ${v2ray_qr_config_file} ] && sed -i "/\"port\"/c \\  \"port\": \"${port1}\"," ${v2ray_qr_config_file}
+    echo -e "${OK} ${GreenBG} port 号:${port1} ${Font}"
 }
 modify_nginx_other() {
     sed -i "/server_name/c \\\tserver_name ${domain};" ${nginx_conf}
@@ -309,7 +309,7 @@ web_camouflage() {
     mkdir -p /home/wwwroot
     cd /home/wwwroot || exit
     git clone https://github.com/wulabing/3DCEList.git
-    judge "web 站点camouflage "
+    judge "Web Site camouflage "
 }
 v2ray_install() {
     if [[ -d /root/v2ray ]]; then
@@ -331,7 +331,7 @@ v2ray_install() {
         echo -e "${Error} ${RedBG} V2ray Install file download fail，Please check download Is the address available ${Font}"
         exit 4
     fi
-    # 清remove临时 file 
+    # Clear remove temporary file 
     rm -rf /root/v2ray
 }
 nginx_exist_check() {
@@ -462,9 +462,9 @@ port_exist_check() {
         echo -e "${OK} ${GreenBG} $1 Port is not occupied ${Font}"
         sleep 1
     else
-        echo -e "${Error} ${RedBG} detected $1 Port is occupied，The following is $1 Port occupationletter interest ${Font}"
+        echo -e "${Error} ${RedBG} detected $1 Port is occupied，The following is $1 Port occupation letter interest ${Font}"
         lsof -i:"$1"
-        echo -e "${OK} ${GreenBG} 5s Will try later since move kill 占用进程 ${Font}"
+        echo -e "${OK} ${GreenBG} 5s Will try later since move kill Occupying process${Font}"
         sleep 5
         lsof -i:"$1" | awk '{print $2}' | grep -v "PID" | xargs kill -9
         echo -e "${OK} ${GreenBG} kill Finish ${Font}"
@@ -644,7 +644,7 @@ vmess_qr_config_tls_ws() {
     cat >$v2ray_qr_config_file <<-EOF
 {
   "v": "2",
-  "ps": "wulabing_${domain}",
+  "ps": "rocknet_store",
   "add": "${domain}",
   "port": "${port}",
   "id": "${UUID}",
@@ -662,9 +662,9 @@ vmess_qr_config_h2() {
     cat >$v2ray_qr_config_file <<-EOF
 {
   "v": "2",
-  "ps": "wulabing_${domain}",
+  "ps": "rocknet_store",
   "add": "${domain}",
-  "port": "${port}",
+  "port": "${port1}",
   "id": "${UUID}",
   "aid": "${alterID}",
   "net": "h2",
@@ -716,15 +716,15 @@ info_extraction() {
 basic_information() {
     {
         echo -e "${OK} ${GreenBG} V2ray+ws+tls Install success"
-        echo -e "${Red} V2ray  Configurationletter interest ${Font}"
+        echo -e "${Red} V2ray Configurationletter interest ${Font}"
         echo -e "${Red} address （address）:${Font} $(info_extraction '\"add\"') "
         echo -e "${Red} port （port）：${Font} $(info_extraction '\"port\"') "
-        echo -e "${Red}  userid（UUID）：${Font} $(info_extraction '\"id\"')"
+        echo -e "${Red} userid（UUID）：${Font} $(info_extraction '\"id\"')"
         echo -e "${Red} additional id（alterId）：${Font} $(info_extraction '\"aid\"')"
         echo -e "${Red} Encryption（security）：${Font} since adapt "
         echo -e "${Red} Transfer Protocol（network）：${Font} $(info_extraction '\"net\"') "
         echo -e "${Red} camouflage type（type）：${Font} none "
-        echo -e "${Red} path （Do not 要落下/）：${Font} $(info_extraction '\"path\"') "
+        echo -e "${Red} path （Do not To fall/）：${Font} $(info_extraction '\"path\"') "
         echo -e "${Red} Underlying transmission security：${Font} tls "
     } >"${v2ray_info_file}"
 }
@@ -883,7 +883,7 @@ install_v2ray_ws_tls() {
     old_config_exist_check
     port_alterid_set
     v2ray_install
-    port_exist_check 80
+    port_exist_check 443
     port_exist_check "${port}"
     nginx_exist_check
     v2ray_conf_add_tls
@@ -911,7 +911,7 @@ install_v2_h2() {
     port_alterid_set
     v2ray_install
     port_exist_check 80
-    port_exist_check "${port}"
+    port_exist_check "${port1}"
     v2ray_conf_add_h2
     ssl_judge_and_install
     vmess_qr_config_h2
@@ -927,19 +927,19 @@ update_sh() {
     echo "$ol_version" >$version_cmp
     echo "$shell_version" >>$version_cmp
     if [[ "$shell_version" < "$(sort -rV $version_cmp | head -1)" ]]; then
-        echo -e "${OK} ${GreenBG} exist新Version，whether renew  [Y/N]? ${Font}"
+        echo -e "${OK} ${GreenBG} Exist new version，whether renew  [Y/N]? ${Font}"
         read -r update_confirm
         case $update_confirm in
         [yY][eE][sS] | [yY])
             wget -N --no-check-certificate https://raw.githubusercontent.com/rockneters/piturays/${github_branch}/install.sh
-            echo -e "${OK} ${GreenBG} renew Finish ${Font}"
+            echo -e "${OK} ${GreenBG} Renew Finish ${Font}"
             exit 0
             ;;
         *) ;;
 
         esac
     else
-        echo -e "${OK} ${GreenBG}  current Version for latest Version ${Font}"
+        echo -e "${OK} ${GreenBG}  Current Version for latest Version ${Font}"
     fi
 
 }
@@ -971,27 +971,26 @@ list() {
 menu() {
     update_sh
     echo -e "\t V2ray Install management script ${Red}[${shell_version}]${Font}"
-    echo -e "\t---authored by wulabing---"
-    echo -e "\thttps://github.com/wulabing\n"
+    echo -e "\t---Re-Edit by Rocknet Store---"
+    echo -e "\tTelegram: @RocknetStore\n"
     echo -e " current already InstallVersion:${shell_mode}\n"
 
-    echo -e "—————————————— Install向 guide  ——————————————"""
+    echo -e "—————————————— Install to guide  ——————————————"""
     echo -e "${Green}0.${Font}  upgrade script"
-    echo -e "${Green}1.${Font}  Install V2Ray (Nginx+ws+tls)"
-    echo -e "${Green}2.${Font}  Install V2Ray (http/2)"
+    echo -e "${Green}1.${Font}  Install V2Ray"
     echo -e "${Green}3.${Font}  upgrade V2Ray core"
     echo -e "——————————————  Configuration change ——————————————"
-    echo -e "${Green}4.${Font}   change UUID"
-    echo -e "${Green}5.${Font}   change alterid"
-    echo -e "${Green}6.${Font}   change port"
-    echo -e "${Green}7.${Font}   change TLS Version(only ws+tls efficient)"
+    echo -e "${Green}4.${Font}  change UUID"
+    echo -e "${Green}5.${Font}  change alterid"
+    echo -e "${Green}6.${Font}  change port"
+    echo -e "${Green}7.${Font}  change TLS Version(only ws+tls efficient)"
     echo -e "—————————————— Check letter interest ——————————————"
     echo -e "${Green}8.${Font}  Check  Real-time access log"
     echo -e "${Green}9.${Font}  Check  Real-time error log"
-    echo -e "${Green}10.${Font} Check  V2Ray  Configurationletter interest"
+    echo -e "${Green}10.${Font} Check  V2Ray Configuration letter interest"
     echo -e "—————————————— other select item  ——————————————"
-    echo -e "${Green}11.${Font} Install 4 combine 1 bbr  sharp speed Installscript"
-    echo -e "${Green}12.${Font} Install MTproxy(support TLS confuse)"
+    echo -e "${Green}11.${Font} Install 4 combine 1 bbr sharp speed Install script"
+    echo -e "${Green}12.${Font} Install MTproxy (support TLS confuse)"
     echo -e "${Green}13.${Font} Certificate Valid period renew "
     echo -e "${Green}14.${Font} Uninstall V2Ray"
     echo -e "${Green}15.${Font} renew  Certificate crontab Scheduled Tasks"
@@ -1006,6 +1005,8 @@ menu() {
     1)
         shell_mode="ws"
         install_v2ray_ws_tls
+        shell_mode="h2"
+        install_v2_h2
         ;;
     2)
         shell_mode="h2"
